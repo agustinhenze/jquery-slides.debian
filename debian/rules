@@ -1,0 +1,44 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+%:
+	dh $@
+
+override_dh_auto_install:
+	mkdir -p debian/libjs-jquery-slides/usr/share/javascript/jquery-slides
+
+	yui-compressor \
+		source/slides.jquery.js \
+		-o \
+		debian/libjs-jquery-slides/usr/share/javascript/jquery-slides/slides.min.jquery.js
+
+	dh_install \
+		source/slides.jquery.js \
+		usr/share/javascript/jquery-slides/
+
+override_dh_link:
+	mkdir -p debian/libjs-jquery-slides/usr/share/doc/libjs-jquery-slides/examples/Carousel/js/
+	mkdir -p debian/libjs-jquery-slides/usr/share/doc/libjs-jquery-slides/examples/Linking/js/
+	mkdir -p debian/libjs-jquery-slides/usr/share/doc/libjs-jquery-slides/examples/Standard/js/
+	mkdir -p debian/libjs-jquery-slides/usr/share/doc/libjs-jquery-slides/examples/images-with-captions/js/
+	mkdir -p debian/libjs-jquery-slides/usr/share/doc/libjs-jquery-slides/examples/Simple/js/
+	mkdir -p debian/libjs-jquery-slides/usr/share/doc/libjs-jquery-slides/examples/Product/js/
+	mkdir -p debian/libjs-jquery-slides/usr/share/doc/libjs-jquery-slides/examples/multiple/js/
+
+	# Duplicate files
+	rm -rf debian/libjs-jquery-slides/usr/share/doc/libjs-jquery-slides/examples/Standard/img
+	rm -rf debian/libjs-jquery-slides/usr/share/doc/libjs-jquery-slides/examples/images-with-captions/img
+	rm -f debian/libjs-jquery-slides/usr/share/doc/libjs-jquery-slides/examples/Product/img/background.png
+	rm -f debian/libjs-jquery-slides/usr/share/doc/libjs-jquery-slides/examples/Product/img/loading.gif
+	dh_link
+
+override_dh_installexamples:
+	dh_installexamples
+	chmod -R -x debian/libjs-jquery-slides/usr/share/doc/libjs-jquery-slides/examples
+	chmod -R -x debian/libjs-jquery-slides/usr/share/javascript/jquery-slides/slides.jquery.js
+
+override_dh_installchangelogs:
+	dh_installchangelogs README.textile

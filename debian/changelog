@@ -1,0 +1,5 @@
+jquery-slides (1.1.9-1) unstable; urgency=low
+
+  * Initial release. (Closes: #697234)
+
+ -- Agustin Henze <tin@sluc.org.ar>  Wed, 02 Jan 2013 18:17:58 -0300

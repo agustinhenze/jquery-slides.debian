@@ -1,0 +1,21 @@
+Repackaging upstream source
+===========================
+
+jquery-slides's original upstream source has been repackage to exclude
+__MAXCOS folder and DFSG-compliant components (minified JavaScript) from it.
+
+$ unzip slides.zip
+$ rm -rf __MACOSX
+$ mv Slides/* .
+$ rm -rf Slides
+$ find . -name "*.min.*" -exec rm -vf \{\} \;
+removed `./source/slides.min.jquery.js'
+removed `./examples/Carousel/js/slides.min.jquery.js'
+removed `./examples/Linking/js/slides.min.jquery.js'
+removed `./examples/Standard/js/slides.min.jquery.js'
+removed `./examples/images-with-captions/js/slides.min.jquery.js'
+removed `./examples/Simple/js/slides.min.jquery.js'
+removed `./examples/Product/js/slides.min.jquery.js'
+removed `./examples/multiple/js/slides.min.jquery.js'
+
+ -- Agustin Henze <tin@sluc.org.ar>  Wed, 02 Jan 2013 19:05:23 -0300

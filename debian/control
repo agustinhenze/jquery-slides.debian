@@ -1,0 +1,21 @@
+Source: jquery-slides
+Section: web
+Priority: optional
+Maintainer: Agustin Henze <tin@sluc.org.ar>
+Uploaders: Ulises Vitulli <dererk@debian.org>
+Build-Depends: debhelper (>= 9)
+Build-Depends-Indep: yui-compressor
+Standards-Version: 3.9.4
+Homepage: http://slidesjs.com/
+Vcs-Git: git://git.debian.org/collab-maint/jquery-sildes.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/jquery-slides.git
+
+
+Package: libjs-jquery-slides
+Architecture: all
+Depends: ${misc:Depends}, libjs-jquery
+Recommends: javascript-common
+Description: Simple slideshow plugin for jQuery
+ A simple slideshow plugin for jQuery packed with a useful set of features to
+ help novice and advanced developers alike create elegant and user-friendly
+ slideshows.
